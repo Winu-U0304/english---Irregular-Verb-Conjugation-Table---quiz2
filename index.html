@@ -637,13 +637,28 @@ function playSound(type) {
 }
 
 function speakVerb(text) {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const cleanText = text.replace(/\s*\/\s*/g, ' or ');
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.85;
-    window.speechSynthesis.speak(utterance);
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  
+  let cleanText = text.replace(/\s*\/\s*/g, ' or ');
+  if (cleanText.toLowerCase() === 'read') {
+    const clickedBtn = window.event ? window.event.target : null;
+    const parentCell = clickedBtn ? clickedBtn.closest('td') : null;
+    
+    if (parentCell) {
+      const cellIndex = parentCell.cellIndex; // 0:星, 1:意味, 2:現在形, 3:過去形, 4:過去分詞形
+      if (cellIndex === 3) {
+        cleanText = 'red';
+      } else {
+        cleanText = 'read';
+      }
+    }
+  }
+
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.85;
+  window.speechSynthesis.speak(utterance);
 }
 
 function showHint(btn, answer) {
@@ -654,9 +669,11 @@ function showHint(btn, answer) {
 }
 
 function checkSpellDiff(user, correctRaw) {
-    const correctAns = correctRaw.split('/').map(ans => ans.trim().toLowerCase());
-    return `<span class="spell-error-hint">正解: ${correctAns.join(' / ')}</span>`;
+  const correctAns = correctRaw.split('/').map(ans => ans.trim().toLowerCase());
+  return `<span class="spell-error-hint">正解: ${correctAns.join(' / ')}</span>`;
 }
+
+
 function renderTable(){
     if(currentMode==='question')return;
     const tbody=document.getElementById('verbs-body');
@@ -1009,3 +1026,6 @@ window.addEventListener('scroll',()=>{
 </footer>
 </body>
 </html>
+
+
+
