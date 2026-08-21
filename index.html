@@ -20,6 +20,7 @@
             --pres-bg: #e6f0fa;
             --past-bg: #e6f5ea;
             --part-bg: #f3e8f9;
+            --ing-bg: #fdf2e9;
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -33,6 +34,7 @@
                 --pres-bg: #1a2a3a;
                 --past-bg: #1a3322;
                 --part-bg: #2a1a35;
+                --ing-bg: #35231a;
             }
         }
         body {
@@ -43,7 +45,7 @@
             color: var(--text-color);
         }
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             background: var(--panel-bg);
             padding: 15px;
@@ -133,30 +135,32 @@
         }
         table {
             width: 100%;
-            min-width: 500px;
+            min-width: 600px;
             border-collapse: collapse;
             margin-top: 10px;
             margin-bottom: 15px;
         }
         th, td {
             border: 1px solid var(--border-color);
-            padding: 10px 5px;
+            padding: 10px 4px;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-color);
         }
         th {
             background-color: var(--th-bg);
         }
-        th:nth-child(1), td:nth-child(1) { width: 10%; }
-        th:nth-child(2), td:nth-child(2) { width: 22%; }
-        th:not(:nth-child(1)):not(:nth-child(2)), td:not(:nth-child(1)):not(:nth-child(2)) { width: 22%; }
+        th:nth-child(1), td:nth-child(1) { width: 8%; }
+        th:nth-child(2), td:nth-child(2) { width: 18%; }
+        th:not(:nth-child(1)):not(:nth-child(2)), td:not(:nth-child(1)):not(:nth-child(2)) { width: 18.5%; }
         .col-root-header { border-bottom: 3px solid #3b82f6; }
         .col-past-header { border-bottom: 3px solid #22c55e; }
         .col-ppart-header { border-bottom: 3px solid #a855f7; }
+        .col-ing-header { border-bottom: 3px solid #f97316; }
         .col-root { background-color: var(--pres-bg) !important; }
         .col-past { background-color: var(--past-bg) !important; }
         .col-ppart { background-color: var(--part-bg) !important; }
+        .col-ing { background-color: var(--ing-bg) !important; }
         .fav-btn {
             cursor: pointer;
             font-size: 18px;
@@ -181,12 +185,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 2px;
             width: 95%;
             height: 32px;
             vertical-align: middle;
         }
-        .tape-text { display: inline-block; font-weight: bold; }
+        .tape-text { display: inline-block; font-weight: bold; font-size: 12px; }
         .tape {
             position: absolute;
             top: 0;
@@ -205,16 +209,16 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 2px;
             width: 95%;
         }
         .quiz-input {
             width: 100%;
-            padding: 4px 24px 4px 4px;
+            padding: 4px 20px 4px 2px;
             border: 1px solid var(--input-border);
             border-radius: 4px;
             text-align: center;
-            font-size: 14px;
+            font-size: 12px;
             box-sizing: border-box;
             background-color: var(--panel-bg);
             color: var(--text-color);
@@ -232,7 +236,7 @@
             font-weight: bold;
         }
         .spell-error-hint {
-            font-size: 11px;
+            font-size: 10px;
             color: #dc2626;
             display: block;
             margin-top: 2px;
@@ -240,24 +244,24 @@
         }
         .hint-btn {
             position: absolute;
-            right: 4px;
+            right: 2px;
             background: none;
             border: none;
-            font-size: 11px;
+            font-size: 10px;
             cursor: pointer;
             opacity: 0.5;
-            padding: 2px;
+            padding: 1px;
             color: var(--text-color);
         }
         .hint-btn:hover { opacity: 1; }
         .tts-btn {
             background: none;
             border: none;
-            font-size: 14px;
+            font-size: 12px;
             cursor: pointer;
             opacity: 0.6;
-            padding: 2px;
-            margin-left: 2px;
+            padding: 1px;
+            margin-left: 1px;
             transition: transform 0.1s;
         }
         .tts-btn:hover { opacity: 1; transform: scale(1.2); }
@@ -297,12 +301,12 @@
             text-align: center;
         }
         .qa-title { font-size: 16px; font-weight: bold; margin-bottom: 15px; color: var(--text-color); }
-        .qa-question { font-size: 20px; font-weight: bold; margin-bottom: 20px; color: var(--text-color); }
+        .qa-question { font-size: 18px; font-weight: bold; margin-bottom: 20px; color: var(--text-color); }
         .qa-options {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            max-width: 400px;
+            max-width: 450px;
             margin: 0 auto;
         }
         .qa-opt-btn {
@@ -312,7 +316,7 @@
             color: var(--text-color);
             border: 2px solid var(--border-color);
             border-radius: 25px;
-            font-size: 15px;
+            font-size: 14px;
             cursor: pointer;
             text-align: center;
             font-weight: bold;
@@ -446,7 +450,8 @@
                     <th>意味</th>
                     <th class="col-root-header">現在形</th>
                     <th class="col-past-header">過去形</th>
-                    <th class="col-ppart-header">過去分詞形</th>
+                    <th class="col-ppart-header">過去分詞</th>
+                    <th class="col-ing-header">ing形</th>
                 </tr>
             </thead>
             <tbody id="verbs-body"></tbody>
@@ -464,76 +469,77 @@
         <button id="reset-btn" class="action-btn reset-btn" onclick="resetQuiz()">やり直す</button>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script>
 const verbData = {
     aaa: [
-        { meaning: "どきどきする", root: "beat", past: "beat", ppart: "beat" },
-        { meaning: "切る", root: "cut", past: "cut", ppart: "cut" },
-        { meaning: "傷つける", root: "hurt", past: "hurt", ppart: "hurt" },
-        { meaning: "置く", root: "put", past: "put", ppart: "put" },
-        { meaning: "読む", root: "read", past: "read", ppart: "read" },
-        { meaning: "配置する", root: "set", past: "set", ppart: "set" },
-        { meaning: "広げる", root: "spread", past: "spread", ppart: "spread" }
+        { meaning: "どきどきする", root: "beat", past: "beat", ppart: "beat", ing: "beating" },
+        { meaning: "切る", root: "cut", past: "cut", ppart: "cut", ing: "cutting" },
+        { meaning: "傷つける", root: "hurt", past: "hurt", ppart: "hurt", ing: "hurting" },
+        { meaning: "置く", root: "put", past: "put", ppart: "put", ing: "putting" },
+        { meaning: "読む", root: "read", past: "read", ppart: "read", ing: "reading" },
+        { meaning: "配置する", root: "set", past: "set", ppart: "set", ing: "setting" },
+        { meaning: "広げる", root: "spread", past: "spread", ppart: "spread", ing: "spreading" }
     ],
     aba: [
-        { meaning: "…になる", root: "become", past: "became", ppart: "become" },
-        { meaning: "来る", root: "come", past: "came", ppart: "come" },
-        { meaning: "走る", root: "run", past: "ran", ppart: "run" }
+        { meaning: "…になる", root: "become", past: "became", ppart: "become", ing: "becoming" },
+        { meaning: "来る", root: "come", past: "came", ppart: "come", ing: "coming" },
+        { meaning: "走る", root: "run", past: "ran", ppart: "run", ing: "running" }
     ],
     abb: [
-        { meaning: "持ってくる", root: "bring", past: "brought", ppart: "brought" },
-        { meaning: "建てる", root: "build", past: "built", ppart: "built" },
-        { meaning: "買う", root: "buy", past: "bought", ppart: "bought" },
-        { meaning: "捕まえる", root: "catch", past: "caught", ppart: "caught" },
-        { meaning: "感じる", root: "feel", past: "felt", ppart: "felt" },
-        { meaning: "見つける", root: "find", past: "found", ppart: "found" },
-        { meaning: "忘れる", root: "forget", past: "forgot", ppart: "forgot" },
-        { meaning: "得る", root: "get", past: "got", ppart: "got" },
-        { meaning: "持っている", root: "have", past: "had", ppart: "had" },
-        { meaning: "聞く", root: "hear", past: "heard", ppart: "heard" },
-        { meaning: "保つ", root: "keep", past: "kept", ppart: "kept" },
-        { meaning: "出発する", root: "leave", past: "left", ppart: "left" },
-        { meaning: "失う", root: "lose", past: "lost", ppart: "lost" },
-        { meaning: "作る", root: "make", past: "made", ppart: "made" },
-        { meaning: "意味する", root: "mean", past: "meant", ppart: "meant" },
-        { meaning: "会う", root: "meet", past: "met", ppart: "met" },
-        { meaning: "払う", root: "pay", past: "paid", ppart: "paid" },
-        { meaning: "言う", root: "say", past: "said", ppart: "said" },
-        { meaning: "売る", root: "sell", past: "sold", ppart: "sold" },
-        { meaning: "おくる", root: "send", past: "sent", ppart: "sent" },
-        { meaning: "すわる", root: "sit", past: "sat", ppart: "sat" },
-        { meaning: "過ごす", root: "spend", past: "spent", ppart: "spent" },
-        { meaning: "立っている", root: "stand", past: "stood", ppart: "stood" },
-        { meaning: "教える", root: "teach", past: "taught", ppart: "taught" },
-        { meaning: "話す、教える", root: "tell", past: "told", ppart: "told" },
-        { meaning: "思う", root: "think", past: "thought", ppart: "thought" },
-        { meaning: "理解する", root: "understand", past: "understood", ppart: "understood" },
-        { meaning: "勝つ", root: "win", past: "won", ppart: "won" }
+        { meaning: "持ってくる", root: "bring", past: "brought", ppart: "brought", ing: "bringing" },
+        { meaning: "建てる", root: "build", past: "built", ppart: "built", ing: "building" },
+        { meaning: "買う", root: "buy", past: "bought", ppart: "bought", ing: "buying" },
+        { meaning: "捕まえる", root: "catch", past: "caught", ppart: "caught", ing: "catching" },
+        { meaning: "感じる", root: "feel", past: "felt", ppart: "felt", ing: "feeling" },
+        { meaning: "見つける", root: "find", past: "found", ppart: "found", ing: "finding" },
+        { meaning: "忘れる", root: "forget", past: "forgot", ppart: "forgot", ing: "forgetting" },
+        { meaning: "得る", root: "get", past: "got", ppart: "got", ing: "getting" },
+        { meaning: "持っている", root: "have", past: "had", ppart: "had", ing: "having" },
+        { meaning: "聞く", root: "hear", past: "heard", ppart: "heard", ing: "hearing" },
+        { meaning: "保つ", root: "keep", past: "kept", ppart: "kept", ing: "keeping" },
+        { meaning: "出発する", root: "leave", past: "left", ppart: "left", ing: "leaving" },
+        { meaning: "失う", root: "lose", past: "lost", ppart: "lost", ing: "losing" },
+        { meaning: "作る", root: "make", past: "made", ppart: "made", ing: "making" },
+        { meaning: "意味する", root: "mean", past: "meant", ppart: "meant", ing: "meaning" },
+        { meaning: "会う", root: "meet", past: "met", ppart: "met", ing: "meeting" },
+        { meaning: "払う", root: "pay", past: "paid", ppart: "paid", ing: "paying" },
+        { meaning: "言う", root: "say", past: "said", ppart: "said", ing: "saying" },
+        { meaning: "売る", root: "sell", past: "sold", ppart: "sold", ing: "selling" },
+        { meaning: "おくる", root: "send", past: "sent", ppart: "sent", ing: "sending" },
+        { meaning: "すわる", root: "sit", past: "sat", ppart: "sat", ing: "sitting" },
+        { meaning: "過ごす", root: "spend", past: "spent", ppart: "spent", ing: "spending" },
+        { meaning: "立っている", root: "stand", past: "stood", ppart: "stood", ing: "standing" },
+        { meaning: "教える", root: "teach", past: "taught", ppart: "taught", ing: "teaching" },
+        { meaning: "話す、教える", root: "tell", past: "told", ppart: "told", ing: "telling" },
+        { meaning: "思う", root: "think", past: "thought", ppart: "thought", ing: "thinking" },
+        { meaning: "理解する", root: "understand", past: "understood", ppart: "understood", ing: "understanding" },
+        { meaning: "勝つ", root: "win", past: "won", ppart: "won", ing: "winning" }
     ],
     abc: [
-        { meaning: "…である", root: "am / is / are", past: "was / were", ppart: "been" },
-        { meaning: "始める", root: "begin", past: "began", ppart: "begun" },
-        { meaning: "破る", root: "break", past: "broke", ppart: "broken" },
-        { meaning: "選ぶ", root: "choose", past: "chose", ppart: "chosen" },
-        { meaning: "する", root: "do", past: "did", ppart: "done" },
-        { meaning: "かく", root: "draw", past: "drew", ppart: "drawn" },
-        { meaning: "飲む", root: "drink", past: "drank", ppart: "drunk" },
-        { meaning: "食べる", root: "eat", past: "ate", ppart: "eaten" },
-        { meaning: "落ちる", root: "fall", past: "fell", ppart: "fallen" },
-        { meaning: "与える", root: "give", past: "gave", ppart: "given" },
-        { meaning: "行く", root: "go", past: "went", ppart: "gone" },
-        { meaning: "…になる", root: "grow", past: "grew", ppart: "grown" },
-        { meaning: "知っている", root: "know", past: "knew", ppart: "known" },
-        { meaning: "乗る", root: "ride", past: "rode", ppart: "ridden" },
-        { meaning: "のぼる", root: "rise", past: "rose", ppart: "risen" },
-        { meaning: "見る", root: "see", past: "saw", ppart: "seen" },
-        { meaning: "見せる", root: "show", past: "showed", ppart: "shown" },
-        { meaning: "歌う", root: "sing", past: "sang", ppart: "sung" },
-        { meaning: "話す", root: "speak", past: "spoke", ppart: "spoken" },
-        { meaning: "泳ぐ", root: "swim", past: "swam", ppart: "swum" },
-        { meaning: "持っていく", root: "take", past: "took", ppart: "taken" },
-        { meaning: "目が覚める", root: "wake", past: "woke", ppart: "woken" },
-        { meaning: "書く", root: "write", past: "wrote", ppart: "written" }
+        { meaning: "…である", root: "am / is / are", past: "was / were", ppart: "been", ing: "being" },
+        { meaning: "始める", root: "begin", past: "began", ppart: "begun", ing: "beginning" },
+        { meaning: "破る", root: "break", past: "broke", ppart: "broken", ing: "breaking" },
+        { meaning: "選ぶ", root: "choose", past: "chose", ppart: "chosen", ing: "choosing" },
+        { meaning: "する", root: "do", past: "did", ppart: "done", ing: "doing" },
+        { meaning: "かく", root: "draw", past: "drew", ppart: "drawn", ing: "drawing" },
+        { meaning: "飲む", root: "drink", past: "drank", ppart: "drunk", ing: "drinking" },
+        { meaning: "食べる", root: "eat", past: "ate", ppart: "eaten", ing: "eating" },
+        { meaning: "落ちる", root: "fall", past: "fell", ppart: "fallen", ing: "falling" },
+        { meaning: "与える", root: "give", past: "gave", ppart: "given", ing: "giving" },
+        { meaning: "行く", root: "go", past: "went", ppart: "gone", ing: "going" },
+        { meaning: "…になる", root: "grow", past: "grew", ppart: "grown", ing: "growing" },
+        { meaning: "知っている", root: "know", past: "knew", ppart: "known", ing: "knowing" },
+        { meaning: "乗る", root: "ride", past: "rode", ppart: "ridden", ing: "riding" },
+        { meaning: "のぼる", root: "rise", past: "rose", ppart: "risen", ing: "rising" },
+        { meaning: "見る", root: "see", past: "saw", ppart: "seen", ing: "seeing" },
+        { meaning: "見せる", root: "show", past: "showed", ppart: "shown", ing: "showing" },
+        { meaning: "歌う", root: "sing", past: "sang", ppart: "sung", ing: "singing" },
+        { meaning: "話す", root: "speak", past: "spoke", ppart: "spoken", ing: "speaking" },
+        { meaning: "泳ぐ", root: "swim", past: "swam", ppart: "swum", ing: "swimming" },
+        { meaning: "持っていく", root: "take", past: "took", ppart: "taken", ing: "taking" },
+        { meaning: "目が覚める", root: "wake", past: "woke", ppart: "woken", ing: "waking" },
+        { meaning: "書く", root: "write", past: "wrote", ppart: "written", ing: "writing" }
     ]
 };
 
@@ -578,7 +584,7 @@ function changeDifficulty(diff) {
     if (currentMode === 'question') restartQuizSet();
 }
 
-function toggleFavorite(meaning, root, past, ppart, btn) {
+function toggleFavorite(meaning, root, past, ppart, ing, btn) {
     btn.classList.remove('pop-effect');
     void btn.offsetWidth;
     btn.classList.add('pop-effect');
@@ -589,7 +595,7 @@ function toggleFavorite(meaning, root, past, ppart, btn) {
         btn.innerText = '☆';
         if (currentType === 'fav') renderTable();
     } else {
-        favorites.push({ meaning, root, past, ppart });
+        favorites.push({ meaning, root, past, ppart, ing });
         btn.classList.add('active');
         btn.innerText = '★';
     }
@@ -646,7 +652,7 @@ function speakVerb(text) {
     const parentCell = clickedBtn ? clickedBtn.closest('td') : null;
     
     if (parentCell) {
-      const cellIndex = parentCell.cellIndex; // 0:星, 1:意味, 2:現在形, 3:過去形, 4:過去分詞形
+      const cellIndex = parentCell.cellIndex; // 0:星, 1:意味, 2:現在形, 3:過去形, 4:過去分詞, 5:ing形
       if (cellIndex === 3) {
         cleanText = 'red';
       } else {
@@ -673,7 +679,6 @@ function checkSpellDiff(user, correctRaw) {
   return `<span class="spell-error-hint">正解: ${correctAns.join(' / ')}</span>`;
 }
 
-
 function renderTable(){
     if(currentMode==='question')return;
     const tbody=document.getElementById('verbs-body');
@@ -681,25 +686,29 @@ function renderTable(){
     let list=currentType==='fav'?favorites:verbData[currentType];
     if(isReviewingWrong){list=wrongVerbsList;}
     if((currentType==='fav'&&list.length===0)&&!isReviewingWrong){
-        tbody.innerHTML='<tr><td colspan="5" style="padding:20px;color:#999;">★ お気に入りに登録された単語はありません。</td></tr>';
+        tbody.innerHTML='<tr><td colspan="6" style="padding:20px;color:#999;">★ お気に入りに登録された単語はありません。</td></tr>';
         return;
     }
     if(isReviewingWrong&&list.length===0){
-        tbody.innerHTML='<tr><td colspan="5" style="padding:20px;color:#28a745;font-weight:bold;">🎉 復習する間違えた問題はもうありません！全問クリア！</td></tr>';
+        tbody.innerHTML='<tr><td colspan="6" style="padding:20px;color:#28a745;font-weight:bold;">🎉 復習する間違えた問題はもうありません！全問クリア！</td></tr>';
         return;
     }
     list.forEach((verb)=>{
         const tr=document.createElement('tr');
         const isFav=favorites.some(v=>v.meaning===verb.meaning&&v.root===verb.root);
-        const favBtnHtml=`<td><button class="fav-btn${isFav?' active':''}" onclick="toggleFavorite('${verb.meaning.replace(/'/g,"\\'")}', '${verb.root.replace(/'/g,"\\'")}', '${verb.past.replace(/'/g,"\\'")}', '${verb.ppart.replace(/'/g,"\\'")}', this)">${isFav?'★':'☆'}</button></td>`;
+        const favBtnHtml=`<td><button class="fav-btn${isFav?' active':''}" onclick="toggleFavorite('${verb.meaning.replace(/'/g,"\\'")}', '${verb.root.replace(/'/g,"\\'")}', '${verb.past.replace(/'/g,"\\'")}', '${verb.ppart.replace(/'/g,"\\'")}', '${verb.ing.replace(/'/g,"\\'")}', this)">${isFav?'★':'☆'}</button></td>`;
         const ttsBtnHtml=(txt)=>`<button class="tts-btn" onclick="speakVerb('${txt.replace(/'/g,"\\'")}')" title="音声を再生">🔊</button>`;
         
         if(currentMode==='memorize'){
-            tr.innerHTML=favBtnHtml+`<td><b>${verb.meaning}</b></td><td class="col-root"><div class="tape-container"><span class="tape-text">${verb.root}</span>${ttsBtnHtml(verb.root)}<div class="tape" onclick="toggleTape(this)"></div></div></td><td class="col-past"><div class="tape-container"><span class="tape-text">${verb.past}</span>${ttsBtnHtml(verb.past)}<div class="tape" onclick="toggleTape(this)"></div></div></td><td class="col-ppart"><div class="tape-container"><span class="tape-text">${verb.ppart}</span>${ttsBtnHtml(verb.ppart)}<div class="tape" onclick="toggleTape(this)"></div></div></td>`;
+            tr.innerHTML=favBtnHtml+`<td><b>${verb.meaning}</b></td><td class="col-root"><div class="tape-container"><span class="tape-text">${verb.root}</span>${ttsBtnHtml(verb.root)}<div class="tape" onclick="toggleTape(this)"></div></div></td><td class="col-past"><div class="tape-container"><span class="tape-text">${verb.past}</span>${ttsBtnHtml(verb.past)}<div class="tape" onclick="toggleTape(this)"></div></div></td><td class="col-ppart"><div class="tape-container"><span class="tape-text">${verb.ppart}</span>${ttsBtnHtml(verb.ppart)}<div class="tape" onclick="toggleTape(this)"></div></div></td><td class="col-ing"><div class="tape-container"><span class="tape-text">${verb.ing}</span>${ttsBtnHtml(verb.ing)}<div class="tape" onclick="toggleTape(this)"></div></div></td>`;
         }else if(currentMode==='write'){
-            tr.innerHTML=favBtnHtml+`<td><b>${verb.meaning}</b></td><td class="col-root"><div class="quiz-input-wrapper"><input type="text" class="quiz-input" data-ans="${verb.root}" autocapitalize="none" autocorrect="off" autocomplete="off"><button class="hint-btn" onclick="showHint(this, '${verb.root}')">?</button></div><div class="spell-feedback"></div></td><td class="col-past"><div class="quiz-input-wrapper"><input type="text" class="quiz-input" data-ans="${verb.past}" autocapitalize="none" autocorrect="off" autocomplete="off"><button class="hint-btn" onclick="showHint(this, '${verb.past}')">?</button></div><div class="spell-feedback"></div></td><td class="col-ppart"><div class="quiz-input-wrapper"><input type="text" class="quiz-input" data-ans="${verb.ppart}" autocapitalize="none" autocorrect="off" autocomplete="off"><button class="hint-btn" onclick="showHint(this, '${verb.ppart}')">?</button></div><div class="spell-feedback"></div></td>`;
+            tr.innerHTML=favBtnHtml+`<td><b>${verb.meaning}</b></td>`+
+                `<td class="col-root"><div class="quiz-input-wrapper"><input type="text" class="quiz-input" data-ans="${verb.root}" autocapitalize="none" autocorrect="off" autocomplete="off"><button class="hint-btn" onclick="showHint(this, '${verb.root}')">?</button></div><div class="spell-feedback"></div></td>`+
+                `<td class="col-past"><div class="quiz-input-wrapper"><input type="text" class="quiz-input" data-ans="${verb.past}" autocapitalize="none" autocorrect="off" autocomplete="off"><button class="hint-btn" onclick="showHint(this, '${verb.past}')">?</button></div><div class="spell-feedback"></div></td>`+
+                `<td class="col-ppart"><div class="quiz-input-wrapper"><input type="text" class="quiz-input" data-ans="${verb.ppart}" autocapitalize="none" autocorrect="off" autocomplete="off"><button class="hint-btn" onclick="showHint(this, '${verb.ppart}')">?</button></div><div class="spell-feedback"></div></td>`+
+                `<td class="col-ing"><div class="quiz-input-wrapper"><input type="text" class="quiz-input" data-ans="${verb.ing}" autocapitalize="none" autocorrect="off" autocomplete="off"><button class="hint-btn" onclick="showHint(this, '${verb.ing}')">?</button></div><div class="spell-feedback"></div></td>`;
         }else{
-            tr.innerHTML=favBtnHtml+`<td><b>${verb.meaning}</b></td><td class="col-root"><span class="tape-text" style="color:var(--primary-color);">${verb.root}</span>${ttsBtnHtml(verb.root)}</td><td class="col-past"><span class="tape-text" style="color:var(--primary-color);">${verb.past}</span>${ttsBtnHtml(verb.past)}</td><td class="col-ppart"><span class="tape-text" style="color:var(--primary-color);">${verb.ppart}</span>${ttsBtnHtml(verb.ppart)}</td>`;
+            tr.innerHTML=favBtnHtml+`<td><b>${verb.meaning}</b></td><td class="col-root"><span class="tape-text" style="color:var(--primary-color);">${verb.root}</span>${ttsBtnHtml(verb.root)}</td><td class="col-past"><span class="tape-text" style="color:var(--primary-color);">${verb.past}</span>${ttsBtnHtml(verb.past)}</td><td class="col-ppart"><span class="tape-text" style="color:var(--primary-color);">${verb.ppart}</span>${ttsBtnHtml(verb.ppart)}</td><td class="col-ing"><span class="tape-text" style="color:var(--primary-color);">${verb.ing}</span>${ttsBtnHtml(verb.ing)}</td>`;
         }
         tbody.appendChild(tr);
     });
@@ -733,7 +742,6 @@ function switchMode(mode){
     const targetId=mode==='memorize'?'memo':mode==='write'?'write':mode==='table'?'table':'question';
     document.getElementById('mode-'+targetId).classList.add('active');
     
-    // 問題！モードの時だけ難易度設定を表示
     const settingsArea = document.getElementById('settings-area');
     if(mode==='question'){
         if(settingsArea) settingsArea.style.display='flex';
@@ -842,14 +850,14 @@ function handleTimeOut(){
         updateRateMeters();
     }
     const buttons=document.querySelectorAll('.qa-opt-btn');
-    const correctAnswerText=`${currentQuestionVerb.past} - ${currentQuestionVerb.ppart}`;
+    const correctAnswerText=`${currentQuestionVerb.past} - ${currentQuestionVerb.ppart} - ${currentQuestionVerb.ing}`;
     buttons.forEach(btn=>{
         btn.classList.add('disabled');
         if(btn.innerText===correctAnswerText){btn.classList.add('correct');}
     });
     const feedbackBox=document.getElementById('qa-feedback-box');
     feedbackBox.className='qa-feedback incorrect';
-    feedbackBox.innerHTML=`<strong>⏰ 時間切れ！</strong><br>制限時間が経過しました。正解は「<strong>${correctAnswerText}</strong>」です。<br>「${currentQuestionVerb.meaning}」の変化は [ <strong>${currentQuestionVerb.root} - ${currentQuestionVerb.past} - ${currentQuestionVerb.ppart}</strong> ] です。<br>`;
+    feedbackBox.innerHTML=`<strong>⏰ 時間切れ！</strong><br>制限時間が経過しました。正解は「<strong>${correctAnswerText}</strong>」です。<br>「${currentQuestionVerb.meaning}」の変化は [ <strong>${currentQuestionVerb.root} - ${currentQuestionVerb.past} - ${currentQuestionVerb.ppart} - ${currentQuestionVerb.ing}</strong> ] です。<br>`;
     createNextOrResultButton(feedbackBox);
 }
 
@@ -895,14 +903,19 @@ function generateQuestion(){
     currentQuestionVerb=verb;
     const typeLabel=currentType==='fav'?'★お気に入り':currentType.toUpperCase()+'型';
     document.getElementById('qa-mode-title').innerText=`【タイムアタック - ${typeLabel} (${currentQuestionCount}/10問目)】`;
-    document.getElementById('qa-question-text').innerText=`「${verb.meaning}」を意味する動詞の、過去形と過去分詞形の正しい組み合わせを選んでください。`;
-    const correctAnswerText=`${verb.past} - ${verb.ppart}`;
+    document.getElementById('qa-question-text').innerText=`「${verb.meaning}」を意味する動詞の、過去形・過去分詞・ing形の正しい組み合わせを選んでください。`;
+    const correctAnswerText=`${verb.past} - ${verb.ppart} - ${verb.ing}`;
     const optionsSet=new Set([correctAnswerText]);
     const dummySrc=currentType==='fav'?(favorites.length>=4?favorites:verbData.aaa.concat(verbData.aba,verbData.abb,verbData.abc)):list;
     while(optionsSet.size<4){
         const dummyVerb1=dummySrc[Math.floor(Math.random()*dummySrc.length)];
         const dummyVerb2=dummySrc[Math.floor(Math.random()*dummySrc.length)];
-        const dummyPatterns=[`${dummyVerb1.past} - ${dummyVerb1.past}`,`${dummyVerb1.root} - ${dummyVerb2.ppart}`,`${verb.past} - ${dummyVerb1.ppart}`,`${verb.root} - ${verb.past}`,`${verb.ppart} - ${verb.past}`];
+        const dummyPatterns=[
+            `${dummyVerb1.past} - ${dummyVerb1.past} - ${dummyVerb1.ing}`,
+            `${dummyVerb1.root} - ${dummyVerb2.ppart} - ${dummyVerb1.ing}`,
+            `${verb.past} - ${dummyVerb1.ppart} - ${dummyVerb2.ing}`,
+            `${verb.root} - ${verb.past} - ${dummyVerb1.ing}`
+        ];
         const chosenDummy=dummyPatterns[Math.floor(Math.random()*dummyPatterns.length)];
         if(chosenDummy!==correctAnswerText){optionsSet.add(chosenDummy);}
     }
@@ -937,10 +950,9 @@ function selectQuestionAnswer(clickedBtn,selectedText,correctText){
         correctCount+=1;
         clickedBtn.classList.add('correct');
         feedbackBox.className='qa-feedback correct';
-        feedbackBox.innerHTML=`<strong>⭕ 正解（現在のコンボ数: 🔥 ${comboCount}）</strong><br>「${currentQuestionVerb.meaning}」の活用は、原形: <strong>${currentQuestionVerb.root}</strong>、過去形: <strong>${currentQuestionVerb.past}</strong>、過去分詞形: <strong>${currentQuestionVerb.ppart}</strong> となります。<br>`;
+        feedbackBox.innerHTML=`<strong>⭕ 正解（現在のコンボ数: 🔥 ${comboCount}）</strong><br>「${currentQuestionVerb.meaning}」の活用は、原形: <strong>${currentQuestionVerb.root}</strong>、過去形: <strong>${currentQuestionVerb.past}</strong>、過去分詞: <strong>${currentQuestionVerb.ppart}</strong>、ing形: <strong>${currentQuestionVerb.ing}</strong> となります。<br>`;
         if(currentType!=='fav'){quizStats[currentType].correct+=1;}
         
-        // 5コンボごとの紙吹雪（安全ガード付き）
         if(comboCount%5===0 && typeof confetti === 'function'){
             confetti({particleCount:50,angle:60,spread:55,origin:{x:0}});
             confetti({particleCount:50,angle:120,spread:55,origin:{x:1}});
@@ -951,7 +963,7 @@ function selectQuestionAnswer(clickedBtn,selectedText,correctText){
         clickedBtn.className="qa-opt-btn incorrect";
         clickedBtn.classList.add('incorrect');
         feedbackBox.className='qa-feedback incorrect';
-        feedbackBox.innerHTML=`<strong>❌ 不正解（コンボがリセットされました）</strong><br>正解は「<strong>${correctText}</strong>」です。<br>「${currentQuestionVerb.meaning}」の正しい変化は [ <strong>${currentQuestionVerb.root} - ${currentQuestionVerb.past} - ${currentQuestionVerb.ppart}</strong> ] です。<br>`;
+        feedbackBox.innerHTML=`<strong>❌ 不正解（コンボがリセットされました）</strong><br>正解は「<strong>${correctText}</strong>」です。<br>「${currentQuestionVerb.meaning}」の正しい変化は [ <strong>${currentQuestionVerb.root} - ${currentQuestionVerb.past} - ${currentQuestionVerb.ppart} - ${currentQuestionVerb.ing}</strong> ] です。<br>`;
     }
     if(currentType!=='fav'){
         quizStats[currentType].total+=1;
@@ -1026,6 +1038,3 @@ window.addEventListener('scroll',()=>{
 </footer>
 </body>
 </html>
-
-
-
