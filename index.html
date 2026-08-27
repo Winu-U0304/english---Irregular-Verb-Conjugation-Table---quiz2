@@ -593,13 +593,15 @@ function toggleFavorite(meaning, root, past, ppart, ing, btn) {
         favorites.splice(idx, 1);
         btn.classList.remove('active');
         btn.innerText = '☆';
-        if (currentType === 'fav') renderTable();
     } else {
         favorites.push({ meaning, root, past, ppart, ing });
         btn.classList.add('active');
         btn.innerText = '★';
     }
     saveFavorites();
+    if (currentType === 'fav') {
+        renderTable();
+    }
 }
 
 function playSound(type) {
@@ -652,7 +654,7 @@ function speakVerb(text) {
     const parentCell = clickedBtn ? clickedBtn.closest('td') : null;
     
     if (parentCell) {
-      const cellIndex = parentCell.cellIndex; // 0:星, 1:意味, 2:現在形, 3:過去形, 4:過去分詞, 5:ing形
+      const cellIndex = parentCell.cellIndex;
       if (cellIndex === 3) {
         cleanText = 'red';
       } else {
@@ -696,7 +698,14 @@ function renderTable(){
     list.forEach((verb)=>{
         const tr=document.createElement('tr');
         const isFav=favorites.some(v=>v.meaning===verb.meaning&&v.root===verb.root);
-        const favBtnHtml=`<td><button class="fav-btn${isFav?' active':''}" onclick="toggleFavorite('${verb.meaning.replace(/'/g,"\\'")}', '${verb.root.replace(/'/g,"\\'")}', '${verb.past.replace(/'/g,"\\'")}', '${verb.ppart.replace(/'/g,"\\'")}', '${verb.ing.replace(/'/g,"\\'")}', this)">${isFav?'★':'☆'}</button></td>`;
+        
+        const safeMeaning = verb.meaning.replace(/'/g, "\\'");
+        const safeRoot = verb.root.replace(/'/g, "\\'");
+        const safePast = verb.past.replace(/'/g, "\\'");
+        const safePpart = verb.ppart.replace(/'/g, "\\'");
+        const safeIng = verb.ing.replace(/'/g, "\\'");
+
+        const favBtnHtml=`<td><button class="fav-btn${isFav?' active':''}" onclick="toggleFavorite('${safeMeaning}', '${safeRoot}', '${safePast}', '${safePpart}', '${safeIng}', this)">${isFav?'★':'☆'}</button></td>`;
         const ttsBtnHtml=(txt)=>`<button class="tts-btn" onclick="speakVerb('${txt.replace(/'/g,"\\'")}')" title="音声を再生">🔊</button>`;
         
         if(currentMode==='memorize'){
