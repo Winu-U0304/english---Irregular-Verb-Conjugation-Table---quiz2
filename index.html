@@ -168,6 +168,7 @@
             background: none;
             border: none;
             padding: 0;
+            touch-action: manipulation;
             transition: transform 0.1s;
             display: inline-block;
         }
@@ -262,6 +263,7 @@
             opacity: 0.6;
             padding: 1px;
             margin-left: 1px;
+            touch-action: manipulation;
             transition: transform 0.1s;
         }
         .tts-btn:hover { opacity: 1; transform: scale(1.2); }
@@ -1024,7 +1026,7 @@ function showQuizResult(){
             confetti({particleCount:5,angle:120,spread:55,origin:{x:1}});
             if(Date.now()<end){requestAnimationFrame(frame);}
         }());
-    }else if(correctCount>=7 && typeof confetti === 'function'){
+    }else{
         playSound('fanfare');
         confetti({particleCount:100,spread:70,origin:{y:0.6}});
     }
